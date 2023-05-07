@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная работа №7</title>
+    <meta name="author" content="Poliklot">
+    <meta name="description" content="На данной странице показана лаборатоная работа по предмету: 'Распределённые алгоритмы'. Тема лабораторной работы :'Реализация кольцевого алгоритма'.">
+    <link rel="stylesheet" href="./style/reset.css">
+    <link rel="stylesheet" href="./style/fonts.css">
+    <link rel="stylesheet" href="./style/modal.css">
+    <link rel="stylesheet" href="./style/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header__logo-wrapper">
+            <img src="./android-chrome-512x512.png" alt="Логотип" class="header__logo">
+        </div>
+    </header>
+    <main class="main">
+        <div class="nav">
+            <!-- <button type="button" class="nav__button"></button> -->
+            <div class="nav__container">
+                <span class="nav__title">Панель управления</span>
+                <ul class="nav__controls-list">
+                    <li class="nav__controls-item">
+                        <button type="button" class="nav__button" id="buttonCreateRandomGraph">Создать рандомный граф</button>
+                    </li>
+                    <li class="nav__controls-item">
+                        <div class="nav__input-wrapper-three">
+                            <label for="inputNodeFrom" class="visually-hidden">Поле ввода наименование вершины от которой нужно будет искать путь</label>
+                            <input type="text" class="nav__input" id="inputNodeFrom" placeholder="Откуда">
+                            <label for="inputNodeTo" class="visually-hidden">Поле ввода наименование вершины до которой нужно будет искать путь</label>
+                            <input type="text" class="nav__input" id="inputNodeTo" placeholder="Куда">
+                            <button type="button" class="nav__button" id="buttonFindPath">Найти путь</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="hystmodal modal-matrix" id="myModal" aria-hidden="true">
+            <div class="hystmodal__wrap">
+                <div class="hystmodal__window" role="dialog" aria-modal="true">
+                    <button data-hystclose class="hystmodal__close">Закрыть</button>
+                    <div class="modal-matrix__body">
+                        <div class="modal-matrix__table">
+                            <div class="modal-matrix__table-row">
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                            </div>
+                            <div class="modal-matrix__table-row">
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                            </div>
+                            <div class="modal-matrix__table-row">
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                            </div>
+                            <div class="modal-matrix__table-row">
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                            </div>
+                            <div class="modal-matrix__table-row">
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                            </div>
+                            <div class="modal-matrix__table-row">
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                            </div>
+                            <div class="modal-matrix__table-row">
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                                <div class="modal-matrix__table-cell">7</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="graph-container"></div>
+    </main>
+    <script src="./scripts/focus-visible.js"></script>
+    <script src="./scripts/vivagraph.js"></script>
+    <script src="./scripts/common.js"></script>
+    <script src="./scripts/RandomGraphGenerator.js"></script>
+    <script src="./scripts/AStar.js"></script>
+    <script src="./scripts/hystmodal.min.js"></script>
+    <script src="./scripts/script.js"></script>
+</body>
+</html>
